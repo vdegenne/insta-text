@@ -1,4 +1,4 @@
-import {LitElement, html, css, PropertyValues, nothing} from 'lit'
+import {LitElement, html, css, PropertyValues} from 'lit'
 import { customElement, query, state } from 'lit/decorators.js'
 import {unsafeHTML} from 'lit/directives/unsafe-html.js'
 import '@material/mwc-snackbar'
@@ -53,7 +53,10 @@ export class AppContainer extends LitElement {
       align-items: center;
       overflow: hidden;
     }
-    
+    #canvas > span {
+      white-space: pre-line;
+    }
+
     #controls {
       width: 100%;
       flex: 1;
@@ -66,16 +69,13 @@ export class AppContainer extends LitElement {
       display: flex;
       height: 100%;
     }
-    
-    #canvas > span {
-      white-space: nowrap;
-    }
+
     :host([lang=japanese]) #canvas > span {
       font-family: 'Noto Serif JP', serif;
       position: relative;
       top: -16px;
     }
-    
+
     hex-color-picker {
       width: 100%;
       height: 100%;
@@ -102,8 +102,8 @@ export class AppContainer extends LitElement {
                 font-size: ${this.size}px;
             }
         </style>
-        
-        
+
+
         <div id="canvas"><span>${unsafeHTML(this.text)}</span></div>
         <mwc-tab-bar activeIndex=${views.indexOf(this.view)} style="width: 100%   "
             @MDCTabBar:activated="${e=> {this.onMDCTabBarActivate(e)}}">
@@ -113,8 +113,8 @@ export class AppContainer extends LitElement {
             <mwc-tab icon="flip_to_front"></mwc-tab>
             <mwc-tab icon="save"></mwc-tab>
         </mwc-tab-bar>
-        
-        
+
+
         <div id="controls">
             <div class="control-box" ?selected="${this.view == 'text'}">
                 <mwc-textarea style="width:100%;height:100%"
@@ -136,7 +136,7 @@ export class AppContainer extends LitElement {
                         .color="${this.backColor}"
                         @color-changed="${e=> this.backColor=e.detail.value}"
                         style="width:100%;height:100%;"
-                ></hex-color-picker> 
+                ></hex-color-picker>
             </div>
             <div class="control-box" ?selected="${this.view == 'front'}">
                 <hex-color-picker

@@ -1034,8 +1034,8 @@ let vi=class extends Qi{};vi.styles=[ze],vi=i([mA("mwc-slider")],vi);var yi=new 
                 font-size: ${this.size}px;
             }
         </style>
-        
-        
+
+
         <div id="canvas"><span>${SA(this.text)}</span></div>
         <mwc-tab-bar activeIndex=${jd.indexOf(this.view)} style="width: 100%   "
             @MDCTabBar:activated="${A=>{this.onMDCTabBarActivate(A)}}">
@@ -1045,8 +1045,8 @@ let vi=class extends Qi{};vi.styles=[ze],vi=i([mA("mwc-slider")],vi);var yi=new 
             <mwc-tab icon="flip_to_front"></mwc-tab>
             <mwc-tab icon="save"></mwc-tab>
         </mwc-tab-bar>
-        
-        
+
+
         <div id="controls">
             <div class="control-box" ?selected="${"text"==this.view}">
                 <mwc-textarea style="width:100%;height:100%"
@@ -1068,7 +1068,7 @@ let vi=class extends Qi{};vi.styles=[ze],vi=i([mA("mwc-slider")],vi);var yi=new 
                         .color="${this.backColor}"
                         @color-changed="${A=>this.backColor=A.detail.value}"
                         style="width:100%;height:100%;"
-                ></hex-color-picker> 
+                ></hex-color-picker>
             </div>
             <div class="control-box" ?selected="${"front"==this.view}">
                 <hex-color-picker
@@ -1097,7 +1097,10 @@ let vi=class extends Qi{};vi.styles=[ze],vi=i([mA("mwc-slider")],vi);var yi=new 
       align-items: center;
       overflow: hidden;
     }
-    
+    #canvas > span {
+      white-space: pre-line;
+    }
+
     #controls {
       width: 100%;
       flex: 1;
@@ -1110,16 +1113,13 @@ let vi=class extends Qi{};vi.styles=[ze],vi=i([mA("mwc-slider")],vi);var yi=new 
       display: flex;
       height: 100%;
     }
-    
-    #canvas > span {
-      white-space: nowrap;
-    }
+
     :host([lang=japanese]) #canvas > span {
       font-family: 'Noto Serif JP', serif;
       position: relative;
       top: -16px;
     }
-    
+
     hex-color-picker {
       width: 100%;
       height: 100%;
